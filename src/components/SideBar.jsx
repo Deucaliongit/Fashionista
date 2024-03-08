@@ -8,6 +8,7 @@ import { CartContext } from "../contexts/CartContext";
 
 const SideBar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext);
+  const { cart } = useContext(CartContext);
   // const { cart, setCart } = useContext(CartContext);
   return (
     <div
@@ -23,6 +24,11 @@ const SideBar = () => {
         >
           <IoMdArrowForward />
         </div>
+      </div>
+      <div>
+        {cart.map((item) => {
+          return <div>{item.title}</div>;
+        })}
       </div>
     </div>
   );
