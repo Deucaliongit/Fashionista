@@ -1,15 +1,19 @@
 import React, { useContext } from "react";
 import { SidebarContext } from "../contexts/SidebarContext";
+import { GiShoppingBag } from "react-icons/gi";
 
 const Header = () => {
   const { isOpen, setIsOpen } = useContext(SidebarContext);
   return (
-    <div>
-      <div>Header</div>
-      <div className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
-        open/close sidebar
+    <header className="bg-black">
+      <div className="text-white">Header</div>
+      <div
+        className="cursor-pointer text-white"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <GiShoppingBag className="" />
       </div>
-    </div>
+    </header>
   );
 };
 
