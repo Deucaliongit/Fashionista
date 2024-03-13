@@ -14,7 +14,7 @@ const SideBar = () => {
     <div
       className={`${
         isOpen ? "right-0" : "-right-full"
-      } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]`}
+      } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[35vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px] overflow-auto`}
     >
       <div className="flex justify-between items-center py-6 border-b">
         <div className="uppercase text-sm font-semibold">Shoping Bag (0)</div>
@@ -27,7 +27,7 @@ const SideBar = () => {
       </div>
       <div>
         {cart.map((item) => {
-          return <div>{item.title}</div>;
+          return <CartItem item={item} key={item.id} />;
         })}
       </div>
     </div>
