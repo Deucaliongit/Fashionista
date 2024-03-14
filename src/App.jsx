@@ -6,11 +6,13 @@ import ProductDetails from "./pages/ProductDetails";
 import SideBar from "./components/SideBar";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import BannerPromo from "./components/BannerPromo";
 
 function App() {
   return (
     <>
       <Router>
+        <BannerPromo />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

@@ -5,6 +5,19 @@ export const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
+  const [itemAmount, setItemAmount] = useState(0);
+
+  //update item amount
+  useEffect(() => {
+    if (cart) {
+      const amount = cart.reduce((accumulator, currentItem) => {
+        return accumulator + currentItem.amount;
+      }, 0);
+      setItemAmount(amount);
+    }
+  }, [cart]);
+
+  //add cart
   const addToCart = (id, product) => {
     const newItem = { ...product, amount: 1 };
     const cartItem = cart.find((item) => {
@@ -31,11 +44,50 @@ const CartProvider = ({ children }) => {
       return item.id !== id;
     });
     setCart(newCart);
-    console.log(newCart);
+  };
+  //delete cart
+  const clearCart = () => {
+    setCart([]);
+  };
+
+  //increase amount
+  const increaseAmount = (id) => {
+    const cartItem = cart.find((item) => item.id === id);
+    addToCart(id, cartItem);
+  };
+
+  //decrease amount
+  const decreaseAmount = (id) => {
+    const cartItem = cart.find((item) => {
+      return item.id === id;
+    });
+    if (cartItem) {
+      const newCart = [...cart].map((item) => {
+        if (item.id === id) {
+          return { ...item, amount: cartItem.amount - 1 };
+        } else {
+          return item;
+        }
+      });
+      setCart(newCart);
+    }
+    if (cartItem.amount < 2) {
+      removeFromCart(id);
+    }
   };
 
   return (
-    <CartContext.Provider value={{ addToCart, cart, removeFromCart }}>
+    <CartContext.Provider
+      value={{
+        addToCart,
+        cart,
+        removeFromCart,
+        clearCart,
+        increaseAmount,
+        decreaseAmount,
+        itemAmount,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
