@@ -23,7 +23,7 @@ const Header = () => {
       <div className="flex mx-auto px-4 lg:px-28 items-center justify-between">
         <Link to={"/"}>
           <div>
-            <h1 className="text-slate-800 font-extrabold lg:text-lg">
+            <h1 className="text-slate-800 font-extrabold lg:text-lg uppercase">
               Sherin Store
             </h1>
           </div>

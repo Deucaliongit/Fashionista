@@ -7,6 +7,10 @@ const CartProvider = ({ children }) => {
 
   const [itemAmount, setItemAmount] = useState(0);
 
+  //total price state
+
+  const [total, setTotal] = useState(0);
+
   //update item amount
   useEffect(() => {
     if (cart) {
@@ -86,6 +90,7 @@ const CartProvider = ({ children }) => {
         increaseAmount,
         decreaseAmount,
         itemAmount,
+        total,
       }}
     >
       {children}

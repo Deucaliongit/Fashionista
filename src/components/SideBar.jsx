@@ -8,13 +8,13 @@ import { CartContext } from "../contexts/CartContext";
 
 const SideBar = () => {
   const { isOpen, handleClose } = useContext(SidebarContext);
-  const { cart, clearCart } = useContext(CartContext);
+  const { cart, clearCart, total } = useContext(CartContext);
 
   return (
     <div
       className={`${
         isOpen ? "right-0" : "-right-full"
-      } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[40vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px] overflow-auto`}
+      } w-full bg-white fixed top-0 h-full shadow-2xl md:w-[40vw] xl:max-w-[30vw] transition-all duration-300 z-20 px-4 lg:px-[35px]`}
     >
       <div className="flex justify-between items-center py-6 border-b">
         <div className="uppercase text-sm font-semibold">Shoping Bag (0)</div>
@@ -25,7 +25,7 @@ const SideBar = () => {
           <IoMdArrowForward />
         </div>
       </div>
-      <div>
+      <div className="flex flex-col gap-y-2 h-[520px] lg:h-[440px] overflow-y-auto overflow-x-hidden border-b">
         {cart.map((item) => {
           return <CartItem item={item} key={item.id} />;
         })}
@@ -33,7 +33,7 @@ const SideBar = () => {
       <div className="flex flex-col gap-y-3 py-4 mt-4">
         <div className="w-full flex justify-between items-center">
           <div className="uppercase font-semibold">
-            <span className="mr-2">Total :</span>$ 10000
+            <span className="mr-2">Total :</span>$ {total}
           </div>
           <div
             onClick={clearCart}
