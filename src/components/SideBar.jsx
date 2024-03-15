@@ -25,7 +25,7 @@ const SideBar = () => {
           <IoMdArrowForward />
         </div>
       </div>
-      <div className="flex flex-col gap-y-2 h-[520px] lg:h-[440px] overflow-y-auto overflow-x-hidden border-b">
+      <div className="flex flex-col gap-y-2 h-[600px] lg:h-[490px] overflow-y-auto overflow-x-hidden border-b">
         {cart.map((item) => {
           return <CartItem item={item} key={item.id} />;
         })}
@@ -33,7 +33,8 @@ const SideBar = () => {
       <div className="flex flex-col gap-y-3 py-4 mt-4">
         <div className="w-full flex justify-between items-center">
           <div className="uppercase font-semibold">
-            <span className="mr-2">Total :</span>$ {total}
+            <span className="mr-2">Total :</span>${" "}
+            {parseFloat(total).toFixed(2)}
           </div>
           <div
             onClick={clearCart}
