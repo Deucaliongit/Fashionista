@@ -12,7 +12,6 @@ function App() {
   return (
     <>
       <Router>
-        <BannerPromo />
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

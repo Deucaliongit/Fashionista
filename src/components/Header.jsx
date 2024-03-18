@@ -18,13 +18,13 @@ const Header = () => {
     <header
       className={`${
         isActive ? "bg-white py-6 shadow-md" : "bg-none py-6"
-      } sticky top-0 w-full z-10 transition-all border-b`}
+      } fixed w-full z-10 transition-all`}
     >
       <div className="flex mx-auto px-4 lg:px-28 items-center justify-between">
         <Link to={"/"}>
           <div>
-            <h1 className="text-slate-800 font-extrabold lg:text-lg uppercase">
-              Sherin Store
+            <h1 className="text-slate-800 font-extrabold lg:text-xl uppercase">
+              Shearin Store
             </h1>
           </div>
         </Link>
